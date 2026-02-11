@@ -1,0 +1,1672 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Engineering Roadmap 2025 | Interactive Guide</title>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "firebase/app";
+    import { getAnalytics } from "firebase/analytics";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+    apiKey: "AIzaSyDdQw8EE-RQGt-QETfLiUkUaqknpyQiVFI",
+    authDomain: "ml-roadmap-2025.firebaseapp.com",
+    projectId: "ml-roadmap-2025",
+    storageBucket: "ml-roadmap-2025.firebasestorage.app",
+    messagingSenderId: "535888770654",
+    appId: "1:535888770654:web:2a7b31d6072900ebcce6cf",
+    measurementId: "G-HJM1D8KYFH"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#8b5cf6',
+                        accent: '#ec4899',
+                        dark: '#0f172a',
+                        darker: '#020617',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 20px rgba(99, 102, 241, 0.5)' },
+                            '100%': { boxShadow: '0 0 40px rgba(99, 102, 241, 0.8)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background: #020617;
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .glass {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .glass-strong {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .timeline-line {
+            background: linear-gradient(to bottom, #6366f1, #8b5cf6, #ec4899);
+        }
+
+        .phase-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .phase-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3);
+        }
+
+        .skill-bar {
+            transition: width 1s ease-out;
+        }
+
+        .resource-link {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .resource-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #6366f1, #ec4899);
+            transition: width 0.3s;
+        }
+
+        .resource-link:hover::after {
+            width: 100%;
+        }
+
+        .checklist-item {
+            transition: all 0.3s;
+        }
+
+        .checklist-item:hover {
+            background: rgba(99, 102, 241, 0.1);
+            transform: translateX(10px);
+        }
+
+        .checklist-item.completed {
+            opacity: 0.6;
+        }
+
+        .checklist-item.completed span {
+            text-decoration: line-through;
+        }
+
+        /* Modal Animations */
+        .modal-enter {
+            animation: modalEnter 0.3s ease-out;
+        }
+
+        @keyframes modalEnter {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #6366f1, #8b5cf6);
+            border-radius: 5px;
+        }
+
+        .tab-active {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+        }
+
+        .platform-card {
+            transition: all 0.3s;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .platform-card:hover {
+            border-color: #6366f1;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .user-avatar:hover {
+            transform: scale(1.1);
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 16px 24px;
+            border-radius: 12px;
+            color: white;
+            font-weight: 500;
+            z-index: 9999;
+            transform: translateX(400px);
+            transition: transform 0.3s ease-out;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .toast.success {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+
+        .toast.error {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+        }
+
+        .toast.info {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        }
+
+        .loading-spinner {
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-left-color: #6366f1;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .streak-flame {
+            animation: flicker 2s ease-in-out infinite;
+        }
+
+        @keyframes flicker {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.8;
+                transform: scale(0.95);
+            }
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <!-- Auth Modal -->
+    <div id="auth-modal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeAuthModal()"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-md p-6">
+            <div class="glass-strong rounded-2xl p-8 modal-enter">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 id="auth-title" class="text-2xl font-bold">Sign In</h2>
+                    <button onclick="closeAuthModal()" class="text-gray-400 hover:text-white">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+
+                <form id="auth-form" onsubmit="handleAuth(event)">
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-400 mb-2">Email</label>
+                            <input type="email" id="auth-email" required
+                                class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:border-primary focus:outline-none transition-colors"
+                                placeholder="you@example.com">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-400 mb-2">Password</label>
+                            <input type="password" id="auth-password" required
+                                class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:border-primary focus:outline-none transition-colors"
+                                placeholder="••••••••">
+                        </div>
+                        <div id="auth-name-field" class="hidden">
+                            <label class="block text-sm font-medium text-gray-400 mb-2">Display Name</label>
+                            <input type="text" id="auth-name"
+                                class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:border-primary focus:outline-none transition-colors"
+                                placeholder="John Doe">
+                        </div>
+                    </div>
+
+                    <button type="submit" id="auth-submit"
+                        class="w-full mt-6 py-3 bg-primary hover:bg-primary/80 rounded-xl font-bold transition-all flex items-center justify-center gap-2">
+                        <span>Sign In</span>
+                        <div id="auth-loading" class="loading-spinner hidden"></div>
+                    </button>
+                </form>
+
+                <div class="mt-6 flex items-center justify-between text-sm">
+                    <button onclick="toggleAuthMode()" id="auth-toggle" class="text-primary hover:underline">
+                        Create account
+                    </button>
+                    <button onclick="resetPassword()" class="text-gray-400 hover:text-white">
+                        Forgot password?
+                    </button>
+                </div>
+
+                <div class="mt-6 pt-6 border-t border-white/10">
+                    <button onclick="signInWithGoogle()"
+                        class="w-full py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl font-medium transition-all flex items-center justify-center gap-3">
+                        <i class="fab fa-google text-red-400"></i>
+                        Continue with Google
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Profile Modal -->
+    <div id="profile-modal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeProfileModal()"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-lg p-6">
+            <div class="glass-strong rounded-2xl p-8 modal-enter">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold">Profile</h2>
+                    <button onclick="closeProfileModal()" class="text-gray-400 hover:text-white">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-20 h-20 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-3xl font-bold"
+                        id="profile-avatar">
+                        JD
+                    </div>
+                    <div>
+                        <h3 id="profile-name" class="text-xl font-bold">John Doe</h3>
+                        <p id="profile-email" class="text-gray-400">john@example.com</p>
+                        <div class="flex items-center gap-2 mt-2">
+                            <span class="streak-flame text-2xl">🔥</span>
+                            <span id="profile-streak" class="font-bold text-orange-400">12 day streak</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="glass rounded-xl p-4">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-gray-400">Overall Progress</span>
+                            <span id="profile-progress" class="font-bold text-primary">45%</span>
+                        </div>
+                        <div class="w-full bg-white/10 rounded-full h-2">
+                            <div id="profile-progress-bar" class="bg-primary h-2 rounded-full transition-all"
+                                style="width: 45%"></div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="glass rounded-xl p-4 text-center">
+                            <div id="profile-completed" class="text-3xl font-bold text-secondary">24</div>
+                            <div class="text-sm text-gray-400">Topics Completed</div>
+                        </div>
+                        <div class="glass rounded-xl p-4 text-center">
+                            <div id="profile-hours" class="text-3xl font-bold text-accent">156</div>
+                            <div class="text-sm text-gray-400">Study Hours</div>
+                        </div>
+                    </div>
+                </div>
+
+                <button onclick="signOut()"
+                    class="w-full mt-6 py-3 bg-red-500/20 hover:bg-red-500/30 text-red-400 border border-red-500/30 rounded-xl font-medium transition-all">
+                    Sign Out
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-40 glass border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2 cursor-pointer" onclick="scrollToTop()">
+                    <i class="fas fa-brain text-3xl text-primary"></i>
+                    <span class="font-bold text-xl tracking-tight">ML<span class="text-primary">Roadmap</span></span>
+                </div>
+
+                <div class="hidden md:flex space-x-8">
+                    <a href="#phases" class="hover:text-primary transition-colors">Phases</a>
+                    <a href="#platforms" class="hover:text-primary transition-colors">Practice</a>
+                    <a href="#resources" class="hover:text-primary transition-colors">Resources</a>
+                    <a href="#timeline" class="hover:text-primary transition-colors">Timeline</a>
+                    <a href="#community" class="hover:text-primary transition-colors">Community</a>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <div id="user-section" class="hidden items-center gap-4">
+                        <div class="text-right hidden sm:block">
+                            <div id="user-name" class="text-sm font-medium">John Doe</div>
+                            <div class="flex items-center gap-1 text-xs text-orange-400">
+                                <span class="streak-flame">🔥</span>
+                                <span id="user-streak">12</span>
+                            </div>
+                        </div>
+                        <div class="user-avatar" id="user-avatar" onclick="openProfileModal()">
+                            JD
+                        </div>
+                    </div>
+
+                    <button id="auth-button" onclick="openAuthModal()"
+                        class="bg-primary hover:bg-primary/80 px-6 py-2 rounded-full font-medium transition-all">
+                        Sign In
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+        <canvas id="hero-canvas" class="absolute inset-0 w-full h-full"></canvas>
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-dark/50 to-darker"></div>
+
+        <div class="relative z-10 text-center px-4 max-w-5xl mx-auto">
+            <div
+                class="inline-block mb-4 px-4 py-2 rounded-full glass text-sm font-medium text-primary border border-primary/30 animate-pulse-slow">
+                <i class="fas fa-rocket mr-2"></i>Updated for 2025-2026
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                Master <span class="gradient-text">Machine Learning</span><br>
+                Engineering
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-400 mb-8 max-w-3xl mx-auto leading-relaxed">
+                A comprehensive, personalized roadmap to become a production-ready ML Engineer.
+                Track your progress, compete with peers, and land your dream job.
+            </p>
+
+            <div id="hero-cta" class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <button onclick="startLearning()"
+                    class="px-8 py-4 bg-primary hover:bg-primary/80 rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-lg shadow-primary/25">
+                    Start Learning Path
+                </button>
+                <button onclick="document.getElementById('timeline').scrollIntoView({behavior: 'smooth'})"
+                    class="px-8 py-4 glass hover:bg-white/10 rounded-full font-bold text-lg transition-all border border-white/20">
+                    View 12-Month Plan
+                </button>
+            </div>
+
+            <!-- Global Stats -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto">
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-primary" id="stat-users">2,847</div>
+                    <div class="text-sm text-gray-400">Active Learners</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-secondary" id="stat-completed">15,234</div>
+                    <div class="text-sm text-gray-400">Topics Completed</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-accent" id="stat-jobs">423</div>
+                    <div class="text-sm text-gray-400">Jobs Landed</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-green-400">4.9/5</div>
+                    <div class="text-sm text-gray-400">User Rating</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personal Dashboard (Visible when logged in) -->
+    <section id="dashboard" class="hidden py-12 px-4 glass border-y border-white/10">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+                <div>
+                    <h2 class="text-3xl font-bold">Your Dashboard</h2>
+                    <p class="text-gray-400">Track your daily progress and maintain your streak</p>
+                </div>
+                <div class="flex gap-4">
+                    <div class="glass rounded-xl px-6 py-3 text-center">
+                        <div class="text-2xl font-bold text-orange-400 streak-flame">🔥 <span
+                                id="dashboard-streak">0</span></div>
+                        <div class="text-xs text-gray-400">Day Streak</div>
+                    </div>
+                    <div class="glass rounded-xl px-6 py-3 text-center">
+                        <div class="text-2xl font-bold text-primary" id="dashboard-progress">0%</div>
+                        <div class="text-xs text-gray-400">Complete</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="glass rounded-xl p-6">
+                    <h3 class="font-bold mb-4 flex items-center gap-2">
+                        <i class="fas fa-calendar-day text-primary"></i>
+                        Today's Focus
+                    </h3>
+                    <div id="daily-tasks" class="space-y-3">
+                        <p class="text-gray-400 text-sm">Loading...</p>
+                    </div>
+                </div>
+
+                <div class="glass rounded-xl p-6">
+                    <h3 class="font-bold mb-4 flex items-center gap-2">
+                        <i class="fas fa-chart-line text-secondary"></i>
+                        Weekly Activity
+                    </h3>
+                    <div class="flex items-end justify-between h-32 gap-2" id="weekly-chart">
+                        <!-- Generated by JS -->
+                    </div>
+                </div>
+
+                <div class="glass rounded-xl p-6">
+                    <h3 class="font-bold mb-4 flex items-center gap-2">
+                        <i class="fas fa-trophy text-accent"></i>
+                        Achievements
+                    </h3>
+                    <div id="achievements-list" class="space-y-2">
+                        <!-- Generated by JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Progress Tracker -->
+    <section class="py-20 px-4 glass border-y border-white/10">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold mb-8 text-center">Your Progress</h2>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4" id="progress-container">
+                <!-- Generated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Roadmap Phases -->
+    <section id="phases" class="py-32 px-4 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Learning Roadmap</h2>
+                <p class="text-gray-400 text-lg">Click on any phase to explore detailed curriculum</p>
+            </div>
+
+            <div class="relative">
+                <div
+                    class="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 timeline-line rounded-full">
+                </div>
+
+                <!-- Phase 1: Foundations -->
+                <div class="phase-container mb-20 md:mb-32 relative" data-phase="foundations">
+                    <div class="md:flex items-center justify-between">
+                        <div class="md:w-5/12 mb-8 md:mb-0 md:text-right">
+                            <div class="phase-card glass rounded-2xl p-8 cursor-pointer"
+                                onclick="togglePhase('foundations')">
+                                <div
+                                    class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/20 text-primary text-2xl font-bold mb-4 border border-primary/30">
+                                    01
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Foundations</h3>
+                                <p class="text-gray-400 mb-4">Python, SQL, Math & Statistics</p>
+                                <div class="flex items-center justify-end gap-4">
+                                    <span
+                                        class="text-xs bg-primary/20 text-primary px-3 py-1 rounded-full phase-progress">0%
+                                        Complete</span>
+                                    <span class="text-sm text-primary"><i class="fas fa-clock mr-1"></i>3 Months</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-primary border-4 border-dark z-10 items-center justify-center">
+                            <i class="fas fa-code text-white"></i>
+                        </div>
+
+                        <div class="md:w-5/12 md:pl-12">
+                            <div id="phase-content-foundations"
+                                class="hidden glass rounded-2xl p-6 border border-primary/20">
+                                <div class="flex justify-between items-center mb-4">
+                                    <h4 class="font-bold text-lg text-primary">Key Topics</h4>
+                                    <span class="text-xs text-gray-400 phase-count">0/5 completed</span>
+                                </div>
+                                <ul class="space-y-3" id="checklist-foundations">
+                                    <!-- Generated by JS -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 2: Core ML -->
+                <div class="phase-container mb-20 md:mb-32 relative" data-phase="core-ml">
+                    <div class="md:flex items-center justify-between flex-row-reverse">
+                        <div class="md:w-5/12 mb-8 md:mb-0 md:text-left">
+                            <div class="phase-card glass rounded-2xl p-8 cursor-pointer"
+                                onclick="togglePhase('core-ml')">
+                                <div
+                                    class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-secondary/20 text-secondary text-2xl font-bold mb-4 border border-secondary/30">
+                                    02
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Core Machine Learning</h3>
+                                <p class="text-gray-400 mb-4">Algorithms, Evaluation & Scikit-learn</p>
+                                <div class="flex items-center gap-4">
+                                    <span class="text-sm text-secondary"><i class="fas fa-clock mr-1"></i>3
+                                        Months</span>
+                                    <span
+                                        class="text-xs bg-secondary/20 text-secondary px-3 py-1 rounded-full phase-progress">0%
+                                        Complete</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-secondary border-4 border-dark z-10 items-center justify-center">
+                            <i class="fas fa-robot text-white"></i>
+                        </div>
+
+                        <div class="md:w-5/12 md:pr-12 md:text-right">
+                            <div id="phase-content-core-ml"
+                                class="hidden glass rounded-2xl p-6 border border-secondary/20">
+                                <div class="flex justify-between items-center mb-4">
+                                    <h4 class="font-bold text-lg text-secondary">Key Topics</h4>
+                                    <span class="text-xs text-gray-400 phase-count">0/5 completed</span>
+                                </div>
+                                <ul class="space-y-3 text-left" id="checklist-core-ml">
+                                    <!-- Generated by JS -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 3: Deep Learning -->
+                <div class="phase-container mb-20 md:mb-32 relative" data-phase="deep-learning">
+                    <div class="md:flex items-center justify-between">
+                        <div class="md:w-5/12 mb-8 md:mb-0 md:text-right">
+                            <div class="phase-card glass rounded-2xl p-8 cursor-pointer"
+                                onclick="togglePhase('deep-learning')">
+                                <div
+                                    class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/20 text-accent text-2xl font-bold mb-4 border border-accent/30">
+                                    03
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Deep Learning</h3>
+                                <p class="text-gray-400 mb-4">Neural Networks, PyTorch/TensorFlow</p>
+                                <div class="flex items-center justify-end gap-4">
+                                    <span
+                                        class="text-xs bg-accent/20 text-accent px-3 py-1 rounded-full phase-progress">0%
+                                        Complete</span>
+                                    <span class="text-sm text-accent"><i class="fas fa-clock mr-1"></i>3 Months</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-accent border-4 border-dark z-10 items-center justify-center">
+                            <i class="fas fa-network-wired text-white"></i>
+                        </div>
+
+                        <div class="md:w-5/12 md:pl-12">
+                            <div id="phase-content-deep-learning"
+                                class="hidden glass rounded-2xl p-6 border border-accent/20">
+                                <div class="flex justify-between items-center mb-4">
+                                    <h4 class="font-bold text-lg text-accent">Specialization Tracks</h4>
+                                    <span class="text-xs text-gray-400 phase-count">0/6 completed</span>
+                                </div>
+                                <ul class="space-y-3" id="checklist-deep-learning">
+                                    <!-- Generated by JS -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 4: MLOps -->
+                <div class="phase-container mb-20 md:mb-32 relative" data-phase="mlops">
+                    <div class="md:flex items-center justify-between flex-row-reverse">
+                        <div class="md:w-5/12 mb-8 md:mb-0 md:text-left">
+                            <div class="phase-card glass rounded-2xl p-8 cursor-pointer" onclick="togglePhase('mlops')">
+                                <div
+                                    class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-500/20 text-green-400 text-2xl font-bold mb-4 border border-green-500/30">
+                                    04
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">MLOps & Production</h3>
+                                <p class="text-gray-400 mb-4">Deployment, Monitoring, Scaling</p>
+                                <div class="flex items-center gap-4">
+                                    <span class="text-sm text-green-400"><i class="fas fa-clock mr-1"></i>3
+                                        Months</span>
+                                    <span
+                                        class="text-xs bg-green-500/20 text-green-400 px-3 py-1 rounded-full phase-progress">0%
+                                        Complete</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-green-500 border-4 border-dark z-10 items-center justify-center">
+                            <i class="fas fa-server text-white"></i>
+                        </div>
+
+                        <div class="md:w-5/12 md:pr-12 md:text-right">
+                            <div id="phase-content-mlops"
+                                class="hidden glass rounded-2xl p-6 border border-green-500/20">
+                                <div class="flex justify-between items-center mb-4">
+                                    <h4 class="font-bold text-lg text-green-400">MLOps Stack</h4>
+                                    <span class="text-xs text-gray-400 phase-count">0/6 completed</span>
+                                </div>
+                                <ul class="space-y-3 text-left" id="checklist-mlops">
+                                    <!-- Generated by JS -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 5: System Design -->
+                <div class="phase-container relative" data-phase="system-design">
+                    <div class="md:flex items-center justify-between">
+                        <div class="md:w-5/12 mb-8 md:mb-0 md:text-right">
+                            <div class="phase-card glass rounded-2xl p-8 cursor-pointer"
+                                onclick="togglePhase('system-design')">
+                                <div
+                                    class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-orange-500/20 text-orange-400 text-2xl font-bold mb-4 border border-orange-500/30">
+                                    05
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">ML System Design</h3>
+                                <p class="text-gray-400 mb-4">Architecture, Interviews, Best Practices</p>
+                                <div class="flex items-center justify-end gap-4">
+                                    <span
+                                        class="text-xs bg-orange-500/20 text-orange-400 px-3 py-1 rounded-full phase-progress">0%
+                                        Complete</span>
+                                    <span class="text-sm text-orange-400"><i
+                                            class="fas fa-infinity mr-1"></i>Ongoing</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-orange-500 border-4 border-dark z-10 items-center justify-center">
+                            <i class="fas fa-sitemap text-white"></i>
+                        </div>
+
+                        <div class="md:w-5/12 md:pl-12">
+                            <div id="phase-content-system-design"
+                                class="hidden glass rounded-2xl p-6 border border-orange-500/20">
+                                <div class="flex justify-between items-center mb-4">
+                                    <h4 class="font-bold text-lg text-orange-400">Interview Prep</h4>
+                                    <span class="text-xs text-gray-400 phase-count">0/3 completed</span>
+                                </div>
+                                <ul class="space-y-3" id="checklist-system-design">
+                                    <!-- Generated by JS -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Practice Platforms -->
+    <section id="platforms" class="py-32 px-4 bg-dark/50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Practice Platforms</h2>
+                <p class="text-gray-400">Curated resources for hands-on learning</p>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button onclick="filterPlatforms('all')"
+                    class="platform-tab px-6 py-2 rounded-full glass hover:bg-primary/20 transition-all tab-active"
+                    data-filter="all">All</button>
+                <button onclick="filterPlatforms('coding')"
+                    class="platform-tab px-6 py-2 rounded-full glass hover:bg-primary/20 transition-all"
+                    data-filter="coding">Coding</button>
+                <button onclick="filterPlatforms('ml')"
+                    class="platform-tab px-6 py-2 rounded-full glass hover:bg-primary/20 transition-all"
+                    data-filter="ml">ML/Data</button>
+                <button onclick="filterPlatforms('system')"
+                    class="platform-tab px-6 py-2 rounded-full glass hover:bg-primary/20 transition-all"
+                    data-filter="system">System Design</button>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="platforms-grid">
+                <!-- Platform Cards -->
+                <div class="platform-card glass rounded-xl p-6" data-category="coding">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold text-primary">LeetCode</h3>
+                        <i class="fas fa-code text-2xl text-gray-400"></i>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4">Essential for FAANG interviews. Focus on Medium/Hard problems.
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs bg-primary/20 text-primary px-3 py-1 rounded-full">Algorithms</span>
+                        <button onclick="markAsVisited('leetcode')"
+                            class="text-gray-400 hover:text-primary transition-colors">
+                            <i class="fas fa-check-circle"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="platform-card glass rounded-xl p-6" data-category="ml">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold text-secondary">Kaggle</h3>
+                        <i class="fas fa-trophy text-2xl text-gray-400"></i>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4">Real datasets, competitions, and notebooks.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs bg-secondary/20 text-secondary px-3 py-1 rounded-full">Competitions</span>
+                        <button onclick="markAsVisited('kaggle')"
+                            class="text-gray-400 hover:text-secondary transition-colors">
+                            <i class="fas fa-check-circle"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="platform-card glass rounded-xl p-6" data-category="coding">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold text-accent">DataLemur</h3>
+                        <i class="fas fa-database text-2xl text-gray-400"></i>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4">FAANG SQL interview questions.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs bg-accent/20 text-accent px-3 py-1 rounded-full">SQL</span>
+                        <button onclick="markAsVisited('datalemur')"
+                            class="text-gray-400 hover:text-accent transition-colors">
+                            <i class="fas fa-check-circle"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="platform-card glass rounded-xl p-6" data-category="system">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold text-green-400">HelloInterview</h3>
+                        <i class="fas fa-sitemap text-2xl text-gray-400"></i>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4">Interactive ML System Design guide.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs bg-green-500/20 text-green-400 px-3 py-1 rounded-full">System Design</span>
+                        <button onclick="markAsVisited('hellointerview')"
+                            class="text-gray-400 hover:text-green-400 transition-colors">
+                            <i class="fas fa-check-circle"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="platform-card glass rounded-xl p-6" data-category="ml">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold text-orange-400">Made With ML</h3>
+                        <i class="fas fa-rocket text-2xl text-gray-400"></i>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4">Free comprehensive MLOps course.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs bg-orange-500/20 text-orange-400 px-3 py-1 rounded-full">MLOps</span>
+                        <button onclick="markAsVisited('madewithml')"
+                            class="text-gray-400 hover:text-orange-400 transition-colors">
+                            <i class="fas fa-check-circle"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="platform-card glass rounded-xl p-6" data-category="coding">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold text-blue-400">NeetCode</h3>
+                        <i class="fas fa-list-ol text-2xl text-gray-400"></i>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4">Structured algorithm practice.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full">Interview Prep</span>
+                        <button onclick="markAsVisited('neetcode')"
+                            class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <i class="fas fa-check-circle"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section id="community" class="py-32 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Community</h2>
+                <p class="text-gray-400">Learn together, grow together</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="glass rounded-2xl p-8">
+                    <h3 class="text-2xl font-bold mb-6 flex items-center gap-2">
+                        <i class="fas fa-users text-primary"></i>
+                        Leaderboard
+                    </h3>
+                    <div id="leaderboard" class="space-y-4">
+                        <p class="text-gray-400 text-center py-8">Sign in to see the leaderboard</p>
+                    </div>
+                </div>
+
+                <div class="glass rounded-2xl p-8">
+                    <h3 class="text-2xl font-bold mb-6 flex items-center gap-2">
+                        <i class="fas fa-comments text-secondary"></i>
+                        Recent Activity
+                    </h3>
+                    <div id="activity-feed" class="space-y-4 max-h-96 overflow-y-auto">
+                        <p class="text-gray-400 text-center py-8">Sign in to see community activity</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources -->
+    <section id="resources" class="py-32 px-4 bg-dark/50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold mb-16 text-center">Essential Resources</h2>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="glass rounded-xl p-6 hover:border-primary/50 transition-all border border-transparent">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-book text-3xl text-primary mr-4"></i>
+                        <h3 class="text-xl font-bold">Must-Read Books</h3>
+                    </div>
+                    <ul class="space-y-3 text-sm">
+                        <li class="resource-link cursor-pointer" onclick="markResourceRead('hands-on-ml')">
+                            <span class="font-medium">Hands-On Machine Learning</span>
+                            <p class="text-gray-400 text-xs">Aurélien Géron</p>
+                        </li>
+                        <li class="resource-link cursor-pointer" onclick="markResourceRead('designing-ml')">
+                            <span class="font-medium">Designing ML Systems</span>
+                            <p class="text-gray-400 text-xs">Chip Huyen</p>
+                        </li>
+                        <li class="resource-link cursor-pointer" onclick="markResourceRead('deep-learning-book')">
+                            <span class="font-medium">Deep Learning</span>
+                            <p class="text-gray-400 text-xs">Ian Goodfellow</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="glass rounded-xl p-6 hover:border-secondary/50 transition-all border border-transparent">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-graduation-cap text-3xl text-secondary mr-4"></i>
+                        <h3 class="text-xl font-bold">Top Courses</h3>
+                    </div>
+                    <ul class="space-y-3 text-sm">
+                        <li class="resource-link cursor-pointer" onclick="markResourceRead('andrew-ng-ml')">
+                            <span class="font-medium">Machine Learning Specialization</span>
+                            <p class="text-gray-400 text-xs">Andrew Ng</p>
+                        </li>
+                        <li class="resource-link cursor-pointer" onclick="markResourceRead('fast-ai')">
+                            <span class="font-medium">Fast.ai Practical Deep Learning</span>
+                            <p class="text-gray-400 text-xs">Free, code-first</p>
+                        </li>
+                        <li class="resource-link cursor-pointer" onclick="markResourceRead('cs229')">
+                            <span class="font-medium">Stanford CS229</span>
+                            <p class="text-gray-400 text-xs">Math-heavy, advanced</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="glass rounded-xl p-6 hover:border-accent/50 transition-all border border-transparent">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-file-alt text-3xl text-accent mr-4"></i>
+                        <h3 class="text-xl font-bold">Documentation</h3>
+                    </div>
+                    <ul class="space-y-3 text-sm">
+                        <li class="resource-link cursor-pointer">
+                            <span class="font-medium">Scikit-Learn User Guide</span>
+                            <p class="text-gray-400 text-xs">Comprehensive ML reference</p>
+                        </li>
+                        <li class="resource-link cursor-pointer">
+                            <span class="font-medium">PyTorch Tutorials</span>
+                            <p class="text-gray-400 text-xs">Official deep learning guides</p>
+                        </li>
+                        <li class="resource-link cursor-pointer">
+                            <span class="font-medium">Hugging Face Docs</span>
+                            <p class="text-gray-400 text-xs">NLP models & datasets</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 py-12 px-4">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center space-x-2 mb-4 md:mb-0">
+                <i class="fas fa-brain text-2xl text-primary"></i>
+                <span class="font-bold text-lg">ML<span class="text-primary">Roadmap</span></span>
+            </div>
+            <div class="flex space-x-6 text-sm text-gray-400">
+                <a href="#" class="hover:text-white transition-colors">GitHub</a>
+                <a href="#" class="hover:text-white transition-colors">Twitter</a>
+                <a href="#" class="hover:text-white transition-colors">Discord</a>
+                <a href="#" class="hover:text-white transition-colors">Newsletter</a>
+            </div>
+            <div class="mt-4 md:mt-0 text-sm text-gray-500">
+                © 2025 ML Engineering Roadmap. Open source project.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div id="toast-container"></div>
+
+    <script>
+        // Firebase Configuration - REPLACE WITH YOUR CONFIG
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "your-project.firebaseapp.com",
+            projectId: "your-project-id",
+            storageBucket: "your-project.appspot.com",
+            messagingSenderId: "123456789",
+            appId: "your-app-id"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+        const storage = firebase.storage();
+
+        // Global State
+        let currentUser = null;
+        let userData = null;
+        let userProgress = {};
+
+        // Curriculum Data
+        const curriculum = {
+            foundations: [
+                { id: 'python-oop', title: 'Advanced Python (OOP, Decorators, Generators)', completed: false },
+                { id: 'sql-advanced', title: 'Complex SQL (Window functions, CTEs, Optimization)', completed: false },
+                { id: 'linear-algebra', title: 'Linear Algebra & Calculus', completed: false },
+                { id: 'probability', title: 'Probability & Statistics', completed: false },
+                { id: 'git-linux', title: 'Git/GitHub & Linux Basics', completed: false }
+            ],
+            'core-ml': [
+                { id: 'supervised', title: 'Supervised Learning (Regression, Classification)', completed: false },
+                { id: 'unsupervised', title: 'Unsupervised Learning (Clustering, PCA)', completed: false },
+                { id: 'ensemble', title: 'Ensemble Methods (XGBoost, LightGBM, CatBoost)', completed: false },
+                { id: 'evaluation', title: 'Model Evaluation & Validation Strategies', completed: false },
+                { id: 'feature-eng', title: 'Feature Engineering & Selection', completed: false }
+            ],
+            'deep-learning': [
+                { id: 'pytorch', title: 'PyTorch/TensorFlow Fundamentals', completed: false },
+                { id: 'cnn', title: 'Computer Vision & CNNs', completed: false },
+                { id: 'nlp', title: 'Natural Language Processing', completed: false },
+                { id: 'transformers', title: 'Transformers & Attention Mechanisms', completed: false },
+                { id: 'gan', title: 'GANs & Generative Models', completed: false },
+                { id: 'rl', title: 'Reinforcement Learning Basics', completed: false }
+            ],
+            mlops: [
+                { id: 'docker', title: 'Docker & Containerization', completed: false },
+                { id: 'kubernetes', title: 'Kubernetes Basics', completed: false },
+                { id: 'mlflow', title: 'MLflow Experiment Tracking', completed: false },
+                { id: 'fastapi', title: 'Model Serving with FastAPI', completed: false },
+                { id: 'airflow', title: 'Workflow Orchestration (Airflow)', completed: false },
+                { id: 'monitoring', title: 'Model Monitoring & Drift Detection', completed: false }
+            ],
+            'system-design': [
+                { id: 'rec-system', title: 'Design Recommendation System', completed: false },
+                { id: 'search-ranking', title: 'Design Search Ranking', completed: false },
+                { id: 'fraud-detection', title: 'Design Fraud Detection System', completed: false }
+            ]
+        };
+
+        // Auth Functions
+        function openAuthModal() {
+            document.getElementById('auth-modal').classList.remove('hidden');
+        }
+
+        function closeAuthModal() {
+            document.getElementById('auth-modal').classList.add('hidden');
+            document.getElementById('auth-form').reset();
+        }
+
+        function toggleAuthMode() {
+            const isSignUp = document.getElementById('auth-title').textContent === 'Sign In';
+            document.getElementById('auth-title').textContent = isSignUp ? 'Create Account' : 'Sign In';
+            document.getElementById('auth-submit').querySelector('span').textContent = isSignUp ? 'Create Account' : 'Sign In';
+            document.getElementById('auth-toggle').textContent = isSignUp ? 'Already have an account?' : 'Create account';
+            document.getElementById('auth-name-field').classList.toggle('hidden', !isSignUp);
+        }
+
+        async function handleAuth(e) {
+            e.preventDefault();
+            const email = document.getElementById('auth-email').value;
+            const password = document.getElementById('auth-password').value;
+            const name = document.getElementById('auth-name').value;
+            const isSignUp = document.getElementById('auth-title').textContent === 'Create Account';
+
+            const loading = document.getElementById('auth-loading');
+            const submitBtn = document.getElementById('auth-submit');
+
+            loading.classList.remove('hidden');
+            submitBtn.disabled = true;
+
+            try {
+                if (isSignUp) {
+                    const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+                    await userCredential.user.updateProfile({ displayName: name });
+                    await createUserDocument(userCredential.user, name);
+                    showToast('Account created successfully!', 'success');
+                } else {
+                    await auth.signInWithEmailAndPassword(email, password);
+                    showToast('Welcome back!', 'success');
+                }
+                closeAuthModal();
+            } catch (error) {
+                showToast(error.message, 'error');
+            } finally {
+                loading.classList.add('hidden');
+                submitBtn.disabled = false;
+            }
+        }
+
+        async function signInWithGoogle() {
+            const provider = new firebase.auth.GoogleAuthProvider();
+            try {
+                const result = await auth.signInWithPopup(provider);
+                if (result.additionalUserInfo.isNewUser) {
+                    await createUserDocument(result.user, result.user.displayName);
+                }
+                showToast('Signed in with Google!', 'success');
+                closeAuthModal();
+            } catch (error) {
+                showToast(error.message, 'error');
+            }
+        }
+
+        async function createUserDocument(user, name) {
+            await db.collection('users').doc(user.uid).set({
+                name: name || user.displayName || 'Anonymous',
+                email: user.email,
+                createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                streak: 0,
+                lastActive: firebase.firestore.FieldValue.serverTimestamp(),
+                totalStudyHours: 0,
+                topicsCompleted: 0,
+                achievements: []
+            });
+
+            // Initialize progress
+            const batch = db.batch();
+            Object.keys(curriculum).forEach(phase => {
+                const ref = db.collection('users').doc(user.uid).collection('progress').doc(phase);
+                batch.set(ref, {
+                    items: curriculum[phase],
+                    completed: 0,
+                    total: curriculum[phase].length
+                });
+            });
+            await batch.commit();
+        }
+
+        async function resetPassword() {
+            const email = document.getElementById('auth-email').value;
+            if (!email) {
+                showToast('Please enter your email', 'error');
+                return;
+            }
+            try {
+                await auth.sendPasswordResetEmail(email);
+                showToast('Password reset email sent!', 'success');
+            } catch (error) {
+                showToast(error.message, 'error');
+            }
+        }
+
+        async function signOut() {
+            try {
+                await auth.signOut();
+                closeProfileModal();
+                showToast('Signed out successfully', 'info');
+            } catch (error) {
+                showToast(error.message, 'error');
+            }
+        }
+
+        // Profile Functions
+        function openProfileModal() {
+            if (!currentUser) {
+                openAuthModal();
+                return;
+            }
+            document.getElementById('profile-modal').classList.remove('hidden');
+            updateProfileDisplay();
+        }
+
+        function closeProfileModal() {
+            document.getElementById('profile-modal').classList.add('hidden');
+        }
+
+        function updateProfileDisplay() {
+            if (!userData) return;
+
+            document.getElementById('profile-name').textContent = userData.name;
+            document.getElementById('profile-email').textContent = currentUser.email;
+            document.getElementById('profile-streak').textContent = `${userData.streak || 0} day streak`;
+            document.getElementById('profile-avatar').textContent = userData.name.split(' ').map(n => n[0]).join('').toUpperCase();
+
+            const totalTopics = Object.values(curriculum).flat().length;
+            const completedTopics = userData.topicsCompleted || 0;
+            const progress = Math.round((completedTopics / totalTopics) * 100);
+
+            document.getElementById('profile-progress').textContent = `${progress}%`;
+            document.getElementById('profile-progress-bar').style.width = `${progress}%`;
+            document.getElementById('profile-completed').textContent = completedTopics;
+            document.getElementById('profile-hours').textContent = userData.totalStudyHours || 0;
+        }
+
+        // Progress Tracking
+        async function toggleTopic(phaseId, topicId) {
+            if (!currentUser) {
+                openAuthModal();
+                return;
+            }
+
+            const phaseRef = db.collection('users').doc(currentUser.uid).collection('progress').doc(phaseId);
+            const doc = await phaseRef.get();
+            const data = doc.data();
+
+            const topicIndex = data.items.findIndex(item => item.id === topicId);
+            const newStatus = !data.items[topicIndex].completed;
+            data.items[topicIndex].completed = newStatus;
+
+            const completed = data.items.filter(item => item.completed).length;
+
+            await phaseRef.update({
+                items: data.items,
+                completed: completed
+            });
+
+            // Update user stats
+            const userRef = db.collection('users').doc(currentUser.uid);
+            await userRef.update({
+                topicsCompleted: firebase.firestore.FieldValue.increment(newStatus ? 1 : -1),
+                lastActive: firebase.firestore.FieldValue.serverTimestamp()
+            });
+
+            // Check for achievements
+            if (newStatus && completed === data.items.length) {
+                awardAchievement(`Completed ${phaseId}!`);
+            }
+
+            renderChecklist(phaseId);
+            updateProgressDisplay();
+            showToast(newStatus ? 'Topic completed! 🎉' : 'Topic unmarked', 'success');
+        }
+
+        function renderChecklist(phaseId) {
+            const container = document.getElementById(`checklist-${phaseId}`);
+            if (!container) return;
+
+            const items = curriculum[phaseId];
+            const userItems = userProgress[phaseId]?.items || items;
+
+            container.innerHTML = userItems.map(item => `
+                <li class="checklist-item flex items-center p-3 rounded cursor-pointer ${item.completed ? 'completed' : ''}" 
+                    onclick="toggleTopic('${phaseId}', '${item.id}')">
+                    <i class="${item.completed ? 'fas fa-check-square text-green-400' : 'far fa-square text-gray-400'} mr-3 text-lg"></i>
+                    <span class="text-sm">${item.title}</span>
+                </li>
+            `).join('');
+
+            const completed = userItems.filter(i => i.completed).length;
+            const progress = Math.round((completed / items.length) * 100);
+
+            const phaseCard = document.querySelector(`[data-phase="${phaseId}"]`);
+            if (phaseCard) {
+                phaseCard.querySelector('.phase-progress').textContent = `${progress}% Complete`;
+                phaseCard.querySelector('.phase-count').textContent = `${completed}/${items.length} completed`;
+            }
+        }
+
+        function updateProgressDisplay() {
+            const totalTopics = Object.values(curriculum).flat().length;
+            let completedTopics = 0;
+
+            Object.keys(userProgress).forEach(phase => {
+                completedTopics += userProgress[phase].items.filter(i => i.completed).length;
+            });
+
+            const overallProgress = Math.round((completedTopics / totalTopics) * 100);
+
+            document.getElementById('dashboard-progress').textContent = `${overallProgress}%`;
+            document.getElementById('progress-container').innerHTML = Object.keys(curriculum).map((phase, idx) => {
+                const items = userProgress[phase]?.items || curriculum[phase];
+                const completed = items.filter(i => i.completed).length;
+                const progress = Math.round((completed / items.length) * 100);
+                const colors = ['primary', 'secondary', 'accent', 'green-500', 'orange-500'];
+
+                return `
+                    <div class="glass rounded-xl p-4 text-center cursor-pointer hover:bg-white/5 transition-all" onclick="document.getElementById('phases').scrollIntoView({behavior: 'smooth'})">
+                        <div class="relative w-20 h-20 mx-auto mb-3">
+                            <svg class="progress-ring w-20 h-20 transform -rotate-90">
+                                <circle cx="40" cy="40" r="36" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="4"/>
+                                <circle cx="40" cy="40" r="36" fill="none" stroke="currentColor" stroke-width="4" 
+                                        class="text-${colors[idx]} transition-all duration-1000" 
+                                        stroke-dasharray="226" 
+                                        stroke-dashoffset="${226 - (226 * progress / 100)}"
+                                        stroke-linecap="round"/>
+                            </svg>
+                            <div class="absolute inset-0 flex items-center justify-center font-bold text-${colors[idx]}">
+                                ${progress}%
+                            </div>
+                        </div>
+                        <h4 class="font-semibold text-sm capitalize">${phase.replace('-', ' ')}</h4>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Dashboard Functions
+        function updateDashboard() {
+            if (!userData) return;
+
+            document.getElementById('dashboard-streak').textContent = userData.streak || 0;
+            document.getElementById('dashboard-progress').textContent =
+                document.getElementById('dashboard-progress').textContent;
+
+            // Generate daily tasks
+            const tasks = [
+                { id: 1, text: 'Complete 1 LeetCode problem', done: false },
+                { id: 2, text: 'Read 1 ML research paper', done: false },
+                { id: 3, text: 'Work on personal project (30 min)', done: false }
+            ];
+
+            document.getElementById('daily-tasks').innerHTML = tasks.map(task => `
+                <div class="flex items-center gap-3 p-3 bg-white/5 rounded-lg cursor-pointer hover:bg-white/10 transition-all" onclick="this.querySelector('i').classList.toggle('fa-check-circle'); this.querySelector('i').classList.toggle('fa-circle')">
+                    <i class="far fa-circle text-primary"></i>
+                    <span class="text-sm">${task.text}</span>
+                </div>
+            `).join('');
+
+            // Weekly chart (mock data)
+            const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+            const values = [3, 5, 2, 6, 4, 7, 5];
+            document.getElementById('weekly-chart').innerHTML = days.map((day, i) => `
+                <div class="flex flex-col items-center gap-2 flex-1">
+                    <div class="w-full bg-primary/20 rounded-t-lg relative" style="height: ${values[i] * 10}%">
+                        <div class="absolute bottom-0 w-full bg-primary rounded-t-lg transition-all duration-1000" style="height: 100%"></div>
+                    </div>
+                    <span class="text-xs text-gray-400">${day}</span>
+                </div>
+            `).join('');
+
+            // Achievements
+            const achievements = userData.achievements || [];
+            document.getElementById('achievements-list').innerHTML = achievements.length > 0
+                ? achievements.map(a => `
+                    <div class="flex items-center gap-3 p-3 bg-yellow-500/10 border border-yellow-500/30 rounded-lg">
+                        <span class="text-2xl">🏆</span>
+                        <span class="text-sm font-medium">${a}</span>
+                    </div>
+                `).join('')
+                : '<p class="text-gray-400 text-sm text-center py-4">Complete topics to earn achievements!</p>';
+        }
+
+        function awardAchievement(name) {
+            if (!currentUser) return;
+            db.collection('users').doc(currentUser.uid).update({
+                achievements: firebase.firestore.FieldValue.arrayUnion(name)
+            });
+            showToast(`Achievement unlocked: ${name}! 🏆`, 'success');
+        }
+
+        // Community Functions
+        async function loadLeaderboard() {
+            const snapshot = await db.collection('users')
+                .orderBy('topicsCompleted', 'desc')
+                .limit(10)
+                .get();
+
+            const leaderboard = document.getElementById('leaderboard');
+            leaderboard.innerHTML = snapshot.docs.map((doc, idx) => {
+                const data = doc.data();
+                return `
+                    <div class="flex items-center gap-4 p-4 ${doc.id === currentUser?.uid ? 'bg-primary/20 border border-primary/30' : 'bg-white/5'} rounded-xl">
+                        <div class="text-2xl font-bold ${idx < 3 ? 'text-yellow-400' : 'text-gray-400'} w-8">
+                            ${idx === 0 ? '🥇' : idx === 1 ? '🥈' : idx === 2 ? '🥉' : idx + 1}
+                        </div>
+                        <div class="flex-1">
+                            <div class="font-medium">${data.name}</div>
+                            <div class="text-sm text-gray-400">${data.topicsCompleted || 0} topics completed</div>
+                        </div>
+                        <div class="text-orange-400 font-bold">🔥 ${data.streak || 0}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        async function loadActivityFeed() {
+            const snapshot = await db.collection('activities')
+                .orderBy('timestamp', 'desc')
+                .limit(20)
+                .get();
+
+            const feed = document.getElementById('activity-feed');
+            feed.innerHTML = snapshot.docs.map(doc => {
+                const data = doc.data();
+                const time = data.timestamp?.toDate().toLocaleDateString() || 'Recently';
+                return `
+                    <div class="flex items-start gap-3 p-3 bg-white/5 rounded-lg">
+                        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-xs font-bold">
+                            ${data.userName?.split(' ').map(n => n[0]).join('') || 'U'}
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-sm"><span class="font-medium">${data.userName}</span> ${data.action}</p>
+                            <p class="text-xs text-gray-400">${time}</p>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        async function logActivity(action) {
+            if (!currentUser) return;
+            await db.collection('activities').add({
+                userId: currentUser.uid,
+                userName: userData.name,
+                action: action,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp()
+            });
+        }
+
+        // UI Functions
+        function togglePhase(phaseId) {
+            const content = document.getElementById(`phase-content-${phaseId}`);
+            const allContents = document.querySelectorAll('[id^="phase-content-"]');
+
+            allContents.forEach(c => {
+                if (c !== content) c.classList.add('hidden');
+            });
+
+            content.classList.toggle('hidden');
+
+            if (!content.classList.contains('hidden')) {
+                renderChecklist(phaseId);
+                gsap.from(content.querySelectorAll('li'), {
+                    y: 20,
+                    opacity: 0,
+                    stagger: 0.1,
+                    duration: 0.5
+                });
+            }
+        }
+
+        function filterPlatforms(category) {
+            const cards = document.querySelectorAll('.platform-card');
+            const tabs = document.querySelectorAll('.platform-tab');
+
+            tabs.forEach(tab => {
+                if (tab.dataset.filter === category) {
+                    tab.classList.add('tab-active');
+                } else {
+                    tab.classList.remove('tab-active');
+                }
+            });
+
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                    gsap.from(card, { scale: 0.9, opacity: 0, duration: 0.3 });
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function startLearning() {
+            if (!currentUser) {
+                openAuthModal();
+                return;
+            }
+            document.getElementById('phases').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showToast(message, type = 'info') {
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.innerHTML = `
+                <div class="flex items-center gap-2">
+                    <i class="fas ${type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle'}"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            document.body.appendChild(toast);
+
+            setTimeout(() => toast.classList.add('show'), 100);
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        // Canvas Animation
+        const canvas = document.getElementById('hero-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let particles = [];
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.size = Math.random() * 2;
+                this.color = `rgba(${99 + Math.random() * 50}, ${102 + Math.random() * 50}, ${241 + Math.random() * 14}, ${0.3 + Math.random() * 0.5})`;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+            }
+
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < 100; i++) particles.push(new Particle());
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            particles.forEach(p => { p.update(); p.draw(); });
+
+            particles.forEach((p1, i) => {
+                particles.slice(i + 1).forEach(p2 => {
+                    const dx = p1.x - p2.x;
+                    const dy = p1.y - p2.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 150) {
+                        ctx.strokeStyle = `rgba(99, 102, 241, ${0.1 * (1 - dist / 150)})`;
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(p1.x, p1.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
+                    }
+                });
+            });
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        // Auth State Listener
+        auth.onAuthStateChanged(async (user) => {
+            currentUser = user;
+
+            if (user) {
+                // User is signed in
+                document.getElementById('auth-button').classList.add('hidden');
+                document.getElementById('user-section').classList.remove('hidden');
+                document.getElementById('user-section').classList.add('flex');
+                document.getElementById('dashboard').classList.remove('hidden');
+
+                // Load user data
+                const userDoc = await db.collection('users').doc(user.uid).get();
+                userData = userDoc.data();
+
+                // Update UI
+                document.getElementById('user-name').textContent = userData.name;
+                document.getElementById('user-streak').textContent = userData.streak || 0;
+                document.getElementById('user-avatar').textContent = userData.name.split(' ').map(n => n[0]).join('').toUpperCase();
+
+                // Load progress
+                const progressSnapshot = await db.collection('users').doc(user.uid).collection('progress').get();
+                progressSnapshot.forEach(doc => {
+                    userProgress[doc.id] = doc.data();
+                });
+
+                // Update streak
+                const lastActive = userData.lastActive?.toDate();
+                const today = new Date();
+                if (lastActive && (today - lastActive) / (1000 * 60 * 60 * 24) < 2) {
+                    // Streak continues
+                } else {
+                    // Reset streak
+                    await db.collection('users').doc(user.uid).update({ streak: 0 });
+                }
+
+                updateDashboard();
+                updateProgressDisplay();
+                loadLeaderboard();
+                loadActivityFeed();
+
+                // Log activity
+                await logActivity('started a learning session');
+
+            } else {
+                // User is signed out
+                document.getElementById('auth-button').classList.remove('hidden');
+                document.getElementById('user-section').classList.add('hidden');
+                document.getElementById('user-section').classList.remove('flex');
+                document.getElementById('dashboard').classList.add('hidden');
+
+                // Reset progress display
+                userProgress = {};
+                updateProgressDisplay();
+            }
+        });
+
+        // Initialize GSAP
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.utils.toArray('.phase-container').forEach((phase, i) => {
+            gsap.from(phase, {
+                scrollTrigger: { trigger: phase, start: 'top 80%', toggleActions: 'play none none reverse' },
+                y: 50, opacity: 0, duration: 0.8, delay: i * 0.1
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Initialize checklists
+        Object.keys(curriculum).forEach(phase => renderChecklist(phase));
+    </script>
+</body>
+
+</html>
